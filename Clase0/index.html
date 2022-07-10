@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <H1>Datos del cliente:</H1>
+        <input type="text" placeholder="Ingresá el nombre del cliente" id="cliente">
+        <div>
+            <h1>Datos del ticket</h1>
+            <H3>Código de producto</H3>
+            <input type="number" placeholder="Ingresá el código del producto" id="codigo"> <br>
+            <h3>Producto</h3>
+            <input type="text" placeholder="Ingresá el nombre del producto" id="producto"> <br>
+            <h3>Precio del producto</h3>
+            <input type="number" placeholder="Ingresá el precio del artículo" id="precio"> <br>
+            <h3>Cantidad</h3>
+            <input type="number" placeholder="Ingresá la cantidad de este artículo" id="cantidad"><br>
+            <h3>Lleva IVA</h3>
+            <select name="iva" class="iva" id="iva">
+                <option value="si">SI</option>
+                <option value="no" selected>NO</option>
+            </select>
+        </div>
+        <br><br>
+        <input type="submit" value="Agregar Producto" onclick="cargarProducto()">
+        <input type="submit" value="Finalizar Ticket" onclick="generarTicket()">
+    </div>
+    <div id="ticketFinal"><h1>Tickets</h1></div>
+    <script src="js/app.js"></script>
+</body>
+</html>
+

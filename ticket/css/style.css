@@ -1,0 +1,26 @@
+.oculto { 
+    display: none; 
+}
+
+.visible { 
+    display: inline; 
+}
+
+img{
+    height: 30px;
+}
+
+button{
+    background-color: rgb(210, 209, 209);
+    height: 200px;
+    width: 300px;
+    color: rgb(38, 45, 240);
+}
+
+
+.buttonSm{
+    background-color: rgb(210, 209, 209);
+    height: 50px;
+    width: 100px;
+    color: rgb(38, 45, 240);
+}

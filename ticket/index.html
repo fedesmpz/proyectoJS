@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Comprobantes</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    
+<!-- barra de navegacioon
+parte de seleccionar si generar, buscar un COMPROBANTE, o mostrar totales
+en  -->
+<!-- barra de navegacion -->
+<nav>
+    <button type="button" class="button" id="btnHome"> Home </button>
+</nav>
+<!-- seccion principal -->
+<div class="container-fluid">
+    <div class="visible" id="start">
+        <div>
+            <button type="button" class="button" id="btnGenerate"> Generar Comprobante </button>
+            <button type="button" class="button" id="btnSearch"> Buscar un Comprobante </button>
+            <button type="button" class="button" id="btnReport"> Generar un Reporte </button>
+        </div>
+    </div>
+</div>
+<!-- generar comprobante -->
+<div class="container-fluid">
+    <div class="oculto" id="generate">
+        <div class="field">
+                <fieldset>
+                    <legend>Información del Cliente</legend>
+                    <p>Nombre completo: <input type="text" name="clientName" id="clientName"></p>
+                    <p>CUIT: <input type="number" name="clientCuit" id="clientCuit"></p>
+                </fieldset>
+                <fieldset>
+                    <legend>Carga de productos</legend>
+                    <p>Codigo<input type="number" id="codeArticle"></p>
+                    <p>Producto<input type="text" id="nameArticle"></p>
+                    <p>Precio<input type="number" id="costArticle"></p>
+                    <p>Cantidad<input type="number" id="numberArticle"></p>
+                    <p>Lleva IVA<select name="iva" class="iva" id="iva"></p>
+                        <option value="si">SI</option>
+                        <option value="no" selected>NO</option>
+                    </select>
+                </fieldset>
+                <button type="button" class="buttonSm" id="btnCreate"> Finalizar el Comprobante </button>
+                <button type="button" class="buttonSm" id="btnAddArticle"> Agregar Artículos </button>
+                <button type="button" class="buttonSm" id="btnClearField"> Limpiar Campos </button>
+
+        </div>
+        <div class="list" id="listArticles">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Código</th>
+                    <th>Tipo</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>IVA</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody id="listedArticleTable">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- buscar comprobante -->
+<div class="container-fluid">
+    <div class="oculto" id="search">
+        <div>
+            <legend>Ingrese el CUIT del ticket que desea buscar</legend>
+            <p>CUIT: <input type="number" name="cuitSearch" id="cuitSearch"></p>
+        </div>
+        <button type="button" class="buttonSm" id="btnCuitSearch"> Buscar </button>
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Cuit</th>
+                    <th>Cliente</th>
+                    <th>Total del Ticket</th>
+                </tr>
+                </thead>
+                <tbody id="listedCuitSearch">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- mostrar informes -->
+<div class="container-fluid">
+    <div class="oculto" id="report">
+        <button type="button" class="buttonSm" id="btnGenerateReport"> Generar reportes y totales</button>
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Ticket</th>
+                <th>Cuit</th>
+                <th>Cliente</th>
+                <th>Total del Ticket</th>
+            </tr>
+            </thead>
+            <tbody id="listedReport">
+
+            </tbody>
+            <button type="button" class="buttonSm" id="totalFieldReport"></button>
+        </table>
+    
+    </div>
+
+</div>
+    
+
+<script src="js/elements.js"></script>
+<script src="js/visual.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
