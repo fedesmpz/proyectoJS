@@ -5,21 +5,12 @@ const insertArticle = (article) =>{
 }
 
 class Ticket{
-    constructor(clientName, cuit, listArticle){
+    constructor(clientName, cuit, listArticle, totalTicket){
         this.clientName = clientName;
         this.cuit = cuit;
         this.listArticle = listArticle;
-        let totalTicket = 0;    
+        this.totalTicket = totalTicket;    
     }
-
-    totTicket = () =>{
-        for (let index = 0; index < this.listArticle.length; index++) {
-            const article = listArticle[index];
-            this.totalTicket = this.totalTicket + article.totCost;
-            
-        }
-    }
-
 
 }
 
@@ -30,12 +21,9 @@ class Article{
         this.cost = cost;
         this.number = number;
         this.iva = iva;
-        let totalCost = 0;
+        this.totalCost = (this.cost * this.number);
     }
 
-    totCost = () =>{
-        this.totalCost = this.cost * this.number;
-    };
     costIva(){
         if(this.iva === "si"){
             this.cost = this.cost * 1.21
@@ -44,17 +32,26 @@ class Article{
 
 }
 
+const totTicket = (listArticle) =>{
+    let totalCostTicket = 0;
+    for (let index = 0; index < listArticle.length; index++) {
+        const article = listArticle[index];
+        totalCostTicket += article.totalCost;
+    }
+    return totalCostTicket
+}
 
 const addArticles = () => {
 
     let article = new Article(codeArticle.value, nameArticle.value, costArticle.value, numberArticle.value, iva.value)
     article.costIva()
-    article.totCost() 
     listArticle.push(article)
     articleTable(article)
     clearFieldsArticle()
     
 }
+
+
 
 const articleTable = (article) => {
     let tr = document.createElement('tr');
@@ -77,10 +74,9 @@ const clearFieldsArticle = () => {
 
 const createTicket = () =>{
     addArticles();
-    let client = clientName.value
-    let cuit = clientCuit.value
-    let ticket = new Ticket(clientName.value, clientCuit.value, listArticle)
-    ticket.totTicket()
+    let total = totTicket(listArticle)
+    let ticket = new Ticket(clientName.value, clientCuit.value, listArticle, total)
+    
     localStorage.setItem(ticket.cuit,JSON.stringify(ticket))
     manageButtonClear();
     listArticle = [];
@@ -140,11 +136,11 @@ const generateReport = () => {
         <td>${index}</td>
         <td>${ticket.cuit}</td>
         <td>${ticket.clientName}</td>
-        <td>${ticket.totalCost}</td>`
+        <td>${ticket.totalTicket}</td>`
         listedReport.appendChild(tr)
-        totalReport = totalReport + ticket.totalTicket
+        totalReport += ticket.totalTicket
     }
-    totalFieldReport.innerText = totalReport.value
+    totalFieldReport.innerText = totalReport
 
 }
 
@@ -154,6 +150,3 @@ btnCuitSearch.onclick = cuitSearching
 btnAddArticle.onclick = addArticles
 btnCreate.onclick = createTicket
 btnGenerateReport.onclick = generateReport
-
-
-//al presionar el boton finalizar el comprobante genera un objeto y en el mismo objeto crea una lista de objetos productos
