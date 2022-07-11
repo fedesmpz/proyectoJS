@@ -81,7 +81,16 @@ const createTicket = () =>{
     manageButtonClear();
     listArticle = [];
     listedArticleTable.innerHTML = "";    
-    alert("El ticket se creó con éxito")
+
+    Swal.fire({
+        title: 'Comprobante generado con éxito',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
 
 }
 

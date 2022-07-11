@@ -9,6 +9,15 @@ const manageSectionGenerate = ()=>{
     pgGenerate.className = 'visible';
     pgSearch.className = 'oculto';
     pgReport.className = 'oculto';
+    Swal.fire({
+        title: 'Se va a generar un nuevo comprobante',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
 }
 const manageSectionSearch = ()=>{
     pgStart.className = 'oculto';
