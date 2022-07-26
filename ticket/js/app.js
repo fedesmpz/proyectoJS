@@ -51,8 +51,6 @@ const addArticles = () => {
     
 }
 
-
-
 const articleTable = (article) => {
     let tr = document.createElement('tr');
     tr.innerHTML = `<td>
@@ -97,13 +95,12 @@ const createTicket = () =>{
 const seeTicketlist = (cuitList) => {
     let tr = document.createElement('tr');
 
-
     for (let index = 0; index < cuitList.length; index++) {
 
         tr.innerHTML = `<td>
     <td>${cuitList[index].cuit}</td>
     <td>${cuitList[index].clientName}</td>
-    <td>${cuitList[index].totalCost}</td>`
+    <td>${cuitList[index].totalTicket}</td>`
     listedCuitSearch.appendChild(tr)
         
     }
@@ -136,24 +133,51 @@ const letListCuit = (cuitNumber) => {
 
 const generateReport = () => {
     let totalReport = 0;
-    
+    listedReport.innerHTML = "";
     for (let index = 0; index < localStorage.length; index++) {
         let tr = document.createElement('tr');
         let key = localStorage.key(index)
         let ticket = JSON.parse(localStorage.getItem(key))
         tr.innerHTML = `<td>
-        <td>${index}</td>
+        <td>${index+1}</td>
         <td>${ticket.cuit}</td>
         <td>${ticket.clientName}</td>
         <td>${ticket.totalTicket}</td>`
         listedReport.appendChild(tr)
         totalReport += ticket.totalTicket
     }
-    totalFieldReport.innerText = totalReport
+    totalFieldReport.innerHTML = `<h1> $ ${totalReport}</h1>`
 
 }
 
+const searchProduct = () => {
+    let code = codeArticle.value;
+    fetch('./datos.json')
+    .then( (response) => response.json())
+    .then( (data) => {
+        for (let index = 0; index < data.length; index++) {
+            if(data[index].codigo == code){
+                Swal.fire({
+                    title: 'Se encontró un artículo con este código en la lista de precio',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })           
+                nameArticle.value = data[index].producto
+                costArticle.value = data[index].precio
+            }
 
+        }
+        }
+       );
+    }
+
+
+
+codeArticle.onchange = searchProduct
 
 btnCuitSearch.onclick = cuitSearching
 btnAddArticle.onclick = addArticles

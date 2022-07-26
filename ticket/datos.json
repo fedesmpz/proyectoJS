@@ -1,0 +1,63 @@
+[
+    {
+        "codigo": 123,
+        "producto": "Cajas de Cartón",
+        "precio": 150
+    },
+    {
+        "codigo": 432,
+        "producto": "Cajas de Madera",
+        "precio": 450
+    },
+    {
+        "codigo": 258,
+        "producto": "Cajas Plástico",
+        "precio": 250
+    },
+    {
+        "codigo": 951,
+        "producto": "Parlantes",
+        "precio": 1350
+    },
+    {
+        "codigo": 753,
+        "producto": "Mouse",
+        "precio": 600
+    },
+    {
+        "codigo": 456,
+        "producto": "Teclado",
+        "precio": 870
+    },
+    {
+        "codigo": 852,
+        "producto": "Monitor",
+        "precio": 2430
+    },
+    {
+        "codigo": 159,
+        "producto": "Libreria",
+        "precio": 740
+    },
+    {
+        "codigo": 357,
+        "producto": "Resma de Hojas",
+        "precio": 520
+    },
+    {
+        "codigo": 987,
+        "producto": "Tinta de Impresora",
+        "precio": 970
+    },
+    {
+        "codigo": 789,
+        "producto": "Cables USB",
+        "precio": 70
+    },
+    {
+        "codigo": 963,
+        "producto": "Conectores",
+        "precio": 30
+    }
+    
+]
