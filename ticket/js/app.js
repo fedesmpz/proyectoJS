@@ -4,6 +4,8 @@ const insertArticle = (article) =>{
     listArticle.push(article);
 }
 
+//genero los objetos Ticket y Article
+
 class Ticket{
     constructor(clientName, cuit, listArticle, totalTicket){
         this.clientName = clientName;
@@ -23,7 +25,7 @@ class Article{
         this.iva = iva;
         this.totalCost = (this.cost * this.number);
     }
-
+    //si tiene iva se le agrega al costo final
     costIva(){
         if(this.iva === "si"){
             this.cost = this.cost * 1.21
@@ -32,6 +34,8 @@ class Article{
 
 }
 
+
+//sumo el total del valor del ticket
 const totTicket = (listArticle) =>{
     let totalCostTicket = 0;
     for (let index = 0; index < listArticle.length; index++) {
@@ -41,6 +45,8 @@ const totTicket = (listArticle) =>{
     return totalCostTicket
 }
 
+
+//agrego el articulo que estoy creando a la lista que tiene el ticket
 const addArticles = () => {
 
     let article = new Article(codeArticle.value, nameArticle.value, costArticle.value, numberArticle.value, iva.value)
@@ -50,7 +56,7 @@ const addArticles = () => {
     clearFieldsArticle()
     
 }
-
+//agrego el articulo a la tabla de articulos
 const articleTable = (article) => {
     let tr = document.createElement('tr');
     tr.innerHTML = `<td>
@@ -63,6 +69,8 @@ const articleTable = (article) => {
 listedArticleTable.appendChild(tr)
 }
 
+
+//limpiar campos
 const clearFieldsArticle = () => {
     codeArticle.value = '';
     nameArticle.value = '';
@@ -70,6 +78,7 @@ const clearFieldsArticle = () => {
     numberArticle.value = '';
 }
 
+//creo el ticket y lo guardo en el localstorage, también mando una advertencia hecha con una librería
 const createTicket = () =>{
     addArticles();
     let total = totTicket(listArticle)
@@ -92,6 +101,8 @@ const createTicket = () =>{
 
 }
 
+
+//muestra los ticket que existen y que coincidan con ese cuit
 const seeTicketlist = (cuitList) => {
     let tr = document.createElement('tr');
 
@@ -107,6 +118,8 @@ const seeTicketlist = (cuitList) => {
 
 }
 
+
+//guardo el número de cuit y genero la lista de cuit 
 const cuitSearching = () =>{
     let cuitNumber = cuitSearch.value
     let cuitList = letListCuit(cuitNumber)
@@ -115,6 +128,8 @@ const cuitSearching = () =>{
 
 }
 
+
+//genero un array con los cuit coincidentes desde el local storage
 const letListCuit = (cuitNumber) => {
 
     let arrTemp =[]
@@ -131,6 +146,8 @@ const letListCuit = (cuitNumber) => {
 
 }
 
+
+//genero el reporte de todos los ticket guardados, con su cuit, y sus valores finales, además de mostrar la ganancia total por todos los ticket ingresados 
 const generateReport = () => {
     let totalReport = 0;
     listedReport.innerHTML = "";
@@ -150,6 +167,8 @@ const generateReport = () => {
 
 }
 
+
+//busco si el codigo del producto ingresado existe en el JSON )como si fuera una BD= por medio del FETCH
 const searchProduct = () => {
     let code = codeArticle.value;
     fetch('./datos.json')
